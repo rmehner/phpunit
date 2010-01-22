@@ -43,10 +43,6 @@
  * @since      File available since Release 3.1.0
  */
 
-require_once 'PHPUnit/Util/InvalidArgumentHelper.php';
-
-PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
-
 /**
  * Class helpers.
  *
