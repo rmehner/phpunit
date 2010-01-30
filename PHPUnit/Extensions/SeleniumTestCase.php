@@ -1024,15 +1024,16 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
             $message = $e->getCustomMessage();
 
             if ($this->captureScreenshotOnFailure &&
-                !empty($this->screenshotPath) &&
-                !empty($this->screenshotUrl)) {
+                !empty($this->screenshotPath)) {
                 $this->drivers[0]->captureEntirePageScreenshot(
                   $this->screenshotPath . DIRECTORY_SEPARATOR . $this->testId .
                   '.png'
                 );
 
-                $buffer .= 'Screenshot: ' . $this->screenshotUrl . '/' .
-                           $this->testId . ".png\n";
+                $buffer .= sprintf("Screenshot: %s/%s.png\n",
+                    empty($this->screenshotUrl) ? $this->screenshotPath : $this->screenshotUrl,
+                    $this->testId
+                );
             }
         }
 
